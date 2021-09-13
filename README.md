@@ -1,6 +1,7 @@
 # AVL - Testing
 
 - [Session 01 - Test Design](test-design.pdf)
+- [Discord server](https://discord.gg/F8Uc38tC)
 
 ## TP
 
