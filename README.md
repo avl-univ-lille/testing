@@ -1,10 +1,10 @@
 # AVL - Testing
 
-- (Session 01 - Test Design)[test-design.pdf]
+- [Session 01 - Test Design](test-design.pdf)
 
 ## TP
 
-Exercise found in (here)[AntiMonopoly.pdf].
+Exercise found in [here](AntiMonopoly.pdf).
 
 Instructions:
  - groups should be composed of at least 2 persons
