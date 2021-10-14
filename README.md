@@ -14,8 +14,8 @@ Instructions:
    - a 2 pages report (max) explaining the main testing design decisions you used.
       - what did you test? why did you test it?
       - what did you not test? why?
-      - avez vous mocké? pour quoi? 
-      - Avez vous structuré les tests d'une certaine manière?
+      - Have you used mocks? why? where?
+      - Have you structured your code in a special way to be able to test it?
 comment avez vous fait le code plus testable?
- - you have 6 weeks to do it
+ - you have until the end of the course to do it
  - the exercise will be noted regarding the test design more than the project itself (but please, do not do it wrong!)
