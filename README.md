@@ -1,7 +1,7 @@
 # AVL - Testing
 
 - [Session 01 - Test Design](test-design.pdf)
-- [Session 03 - Testign Research](2021-testing-research.pdf)
+- [Session 03 - Testing Research](2021-testing-research.pdf)
 - [Discord server](https://discord.gg/2QEVzCxq)
 
 ## TP
