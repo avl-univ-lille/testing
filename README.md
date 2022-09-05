@@ -26,6 +26,7 @@ Choose one of the following:
  - [Delta Debugging - test case reduction](https://www.cs.purdue.edu/homes/xyzhang/fall07/Papers/delta-debugging.pdf)
  - [Test Case Selection](https://hal.inria.fr/hal-01344842/document)
  - [Rotten Green tests](https://hal.inria.fr/hal-02002346v2/document)
+ - [Differential testing](https://www.cs.swarthmore.edu/~bylvisa1/cs97/f13/Papers/DifferentialTestingForSoftware.pdf)
  
 ### Some hints to read a scientific paper
   - read first abstract, intro and conclusion. Try to get what the paper is about.
