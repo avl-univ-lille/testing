@@ -27,7 +27,15 @@ Choose one of the following:
  - [Test Case Selection](https://hal.inria.fr/hal-01344842/document)
  - [Rotten Green tests](https://hal.inria.fr/hal-02002346v2/document)
  - [Differential testing](https://www.cs.swarthmore.edu/~bylvisa1/cs97/f13/Papers/DifferentialTestingForSoftware.pdf)
- 
+
+### Expected presentation outline
+
+Be problem oriented. Present at least
+ - Context. What are we talking about. E.g., Applications with lots of tests, with few tests?
+ - Problem. What happens in that context. E.g., We want to generate tests.
+ - Solution. What do they do to solve th problem in the context. E.g., Analyse the app to generate tests semi-randomly.
+ - Conclusion. Does the solution solve the problem? How? What does it miss? What did you learn?
+
 ### Some hints to read a scientific paper
   - read first abstract, intro and conclusion. Try to get what the paper is about.
   - Try to understand what the problem is before diving into the details. Look for examples.
