@@ -2,13 +2,14 @@
 
 ## Organisation
 
-- Week 1: Testing 101 + Test Desing
+- Week 1 (05/09): Testing 101 + Test Desing
   - make your teams
   - choose a paper, start reading
   - choose a project topic, start coding
-- Week 2: Automatic Test Generation
-- Week 3: Extreme TDD
+- Week 2 (12/09): Automatic Test Generation
+- Week 3 (19/09): Extreme TDD
   - presentations
+  - exam
 
 [Discord server](https://discord.gg/h2mH5Daq)
 
