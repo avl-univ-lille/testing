@@ -10,6 +10,7 @@
 - Week 3 (19/09): Extreme TDD
   - presentations
   - exam
+- Week 7 (17/10): Project Deadline
 
 [Discord server](https://discord.gg/h2mH5Daq)
 
