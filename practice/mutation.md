@@ -37,7 +37,7 @@ analysis run.
 ```
 
 Executing the previous code does have some interesting outcomes.
-First, we can ask ther result for the mutation score. In this case, we have a score of 69, meaning that 69% of the mutants were killed.
+First, we can ask the result for the mutation score. In this case, we have a score of 69, meaning that 69% of the mutants were killed.
 
 ```smalltalk
 analysis generalResult mutationScore
