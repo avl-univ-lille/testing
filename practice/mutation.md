@@ -163,31 +163,32 @@ In this section we will see the overview of two techniques to improve such runti
 
 Maybe you already noticed, but the previous mutation analysis takes long time because it introduces an infinite recursion.
 Thus, there is one mutation that makes the code *very* slow and times out tests.
+Also, the library has high code coverage and it's very small, so there are few chances of optimisation here.
 
-To make things more interesting, let's change our test subject to Pharo's XML library.
-You can install XMLParser through:
+To make things more interesting, let's change our test subject to Pharo's PDF generation library.
+You can install Artefact PDF through:
 
 ```smalltalk
 Metacello new
-  baseline: 'XMLParser';
-  repository: 'github://pharo-contributions/XML-XMLParser/src';
-  load.
+	githubUser: 'pharo-contributions' project: 'Artefact' commitish: 'master' path: 'src';
+	baseline: 'Artefact';
+	load.
 ```
 
 And run mutation analysis with the following script:
 
 ```smalltalk
-testCases :=  { UUIDPrimitivesTest. UUIDTest . UUIDGeneratorTest }.
-classesToMutate := { UUID . UUIDGenerator }.
+testCases := {PDFHorizontalLayoutTest. PDFBasicTest. PDFElementTest. PDFLayoutTest. PDFColorTest. PDFFontTest. PDFParagraphTest. PDFDataTypeTest. PDFGeneratorTest. PDFStreamPrinterTest}.
+classesToMutate := 'Artefact-Core' asPackage definedClasses.
 
 analysis := MutationTestingAnalysis
     testCasesFrom: testCases
     mutating: classesToMutate
     using: MutantOperator contents
     with: AllTestsMethodsRunningMutantEvaluationStrategy new.
-
-baseline := [analysis run.] timeToRun. "0:00:00:19.071"
 ```
+
+This analysis takes around 2 minute (it was 1 minute, 52 secs in my machine when I ran this).
 
 ### Test selection
 
@@ -212,20 +213,20 @@ analysis := MutationTestingAnalysis
     using: MutantOperator contents
     with: SelectingFromCoverageMutantEvaluationStrategy new.
 
-testSelection := [analysis run.] timeToRun. "0:00:00:16.453"
+testSelection := [analysis run.] timeToRun. "0:00:01:19.115"
 ```
 
-Running this on the same machine takes three seconds less, which means it is 1.15x faster
+Running this on the same machine takes 30 seconds less, which means it is 1.4x faster than the original analysis.
 
 ```smalltalk
-(19.071 / 16.453) "1.15x"
+(112 "seconds" / 79 "seconds") "1.4x"
 ```
 
-Of course, the gains could be even bigger for bigger projects.
+Of course, the gains could be even bigger for bigger projects that have low coverage.
 
 ### Mutant selection
 
-A second way to reduce the runtime of mutation testing is to run the analysis with a subset of the original mutants.
+Alternatively, we could reduce the runtime of mutation testing is to run the analysis with a subset of the original mutants.
 A naïve selection would, again of course, impact the results and thus the mutation score, potentially leading to misleading results.
 (Although research has somewhat established that random selection *works pretty well*).
 In this section, we will see a conservative way to mutant selection: *only run mutants that are covered by at least a test*.
@@ -237,3 +238,30 @@ This technique uses code coverage as a metric:
     1. installs the mutation
     2. runs the tests
     3. uninstall the mutation
+
+
+To do this using mutalk, we need to use a new argument: the  `SelectingFromCoverageMutationsGenerationStrategy` class.
+
+```smalltalk
+analysis := MutationTestingAnalysis
+    testCasesFrom: testCases
+    mutating: classesToMutate
+    using: MutantOperator contents
+    with: AllTestsMethodsRunningMutantEvaluationStrategy new
+    with: SelectingFromCoverageMutationsGenerationStrategy new.
+
+mutantSelection := [analysis run.] timeToRun. "0:00:01:15.723"
+```
+
+Running this on the same machine takes 35 seconds less than the original, which means it is 1.5x faster than the original analysis.
+
+```smalltalk
+(112 "seconds" / 75 "seconds") "1.5x"
+```
+
+Of course, again , the gains could be even bigger for bigger projects that have low coverage.
+
+### Further?
+
+Of course different other strategies could be used to improve performance.
+For example, we could have a way to run a subset of the mutants given a *budget*, we could make a random selection of mutants, we could try grouping/clustering mutants.
