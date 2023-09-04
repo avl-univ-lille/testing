@@ -6,10 +6,12 @@
 
 ### Practice
 - Mutations with Mutalk
-- TBA
 
 ### Homework
-TBA
+- finish the practice!
+- run mutation analysis on the practice's XML parser library
+  - can you find equivalent mutants?
+  - can you write a test to increase mutation score?
 
 ## Week 2 (18/09)
 
