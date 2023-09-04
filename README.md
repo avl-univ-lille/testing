@@ -2,9 +2,15 @@
 
 This repository contains the material of a (short) advanced testing course originally developed for the Master 2 Génie Logiciel @ Université de Lille.
 
-- [Agenda](agenda.md)
+- [Course Agenda](agenda.md)
+- [Course Material](slides)
+- [Course Practices](practice)
+- [TP/Homework](tp.md)
+
+Get in contact!
 - [Discord server](https://discord.gg/h2mH5Daq)
-- [TP conditions](tp.md)
+- email: guillermo.polito_at_inria.fr
+
 
 ## Modules
 
