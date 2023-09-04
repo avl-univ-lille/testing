@@ -2,6 +2,10 @@
 
 This repository contains the material of a (short) advanced testing course originally developed for the Master 2 Génie Logiciel @ Université de Lille.
 
+- [Agenda](agenda.md)
+- [Discord server](https://discord.gg/h2mH5Daq)
+- [TP conditions](tp.md)
+
 ## Modules
 
 - **Module 0: Testing Refresher.** Importance of testing. RIGHT BICEP principle: Right, boundaries, inverse and error conditions, cross-checks, and performance. Automated testing. Unit testing frameworks. Examples: JUnit and SUnit.
