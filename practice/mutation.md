@@ -91,7 +91,7 @@ testCases :=  { UUIDPrimitivesTest. UUIDTest }.
 Now that we have harvested the low-hanging fruits, we can try to write a test.
 For example, we see lots of mutations survived in the following method:
 
-```
+```smalltalk
 UUID >> < aMagnitude
 	"Answer whether the receiver is less than the argument."
 
@@ -135,3 +135,105 @@ In the same vein, we never compare `b < a`.
 4. Extend the list of test classes to also include `UUIDGeneratorTest`, run the analysis again and analyse the survivors.
    - which ones look like equivalent mutants? why?
    - can you change the method `UUIDGenerator>>#nextRandom16` to increase the coverage even further?
+  
+## Improving Mutation Analysis Runtime
+
+Naively computing the mutation score for a project means to run all tests once per mutant.
+This means that the time to run the tests will increase with larger code bases (because more mutants could be computed) and with bigger test cases.
+
+For example, our previous code takes around 20 seconds to run on an Apple Silicon M1 machine.
+
+```smalltalk
+testCases :=  { UUIDPrimitivesTest. UUIDTest . UUIDGeneratorTest }.
+classesToMutate := { UUID . UUIDGenerator }.
+
+analysis := MutationTestingAnalysis
+    testCasesFrom: testCases
+    mutating: classesToMutate
+    using: MutantOperator contents
+    with: AllTestsMethodsRunningMutantEvaluationStrategy new.
+
+baseline := [analysis run.] timeToRun. "0:00:00:19.071"
+```
+
+To allow better configurations, Mutalk uses a modular design where the user configures differents aspects of the analysis.
+In this section we will see the overview of two techniques to improve such runtime: mutant selection and test selection.
+
+### Changing our case study
+
+Maybe you already noticed, but the previous mutation analysis takes long time because it introduces an infinite recursion.
+Thus, there is one mutation that makes the code *very* slow and times out tests.
+
+To make things more interesting, let's change our test subject to Pharo's XML library.
+You can install XMLParser through:
+
+```smalltalk
+Metacello new
+  baseline: 'XMLParser';
+  repository: 'github://pharo-contributions/XML-XMLParser/src';
+  load.
+```
+
+And run mutation analysis with the following script:
+
+```smalltalk
+testCases :=  { UUIDPrimitivesTest. UUIDTest . UUIDGeneratorTest }.
+classesToMutate := { UUID . UUIDGenerator }.
+
+analysis := MutationTestingAnalysis
+    testCasesFrom: testCases
+    mutating: classesToMutate
+    using: MutantOperator contents
+    with: AllTestsMethodsRunningMutantEvaluationStrategy new.
+
+baseline := [analysis run.] timeToRun. "0:00:00:19.071"
+```
+
+### Test selection
+
+One way to reduce the runtime of mutation testing is to run the analysis on a subset of the original tests.
+A random selection would, of course, impact the results and thus the mutation score, potentially leading to misleading results.
+In this section, we will see a conservative way to test selection: *only run tests that cover a mutant*.
+
+This technique uses code coverage as a metric:
+1. it first runs all tests and evaluates the code coverage of each test. Particularly, it remembers what method was covered by what test.
+2. then, it computes mutants
+3. then, we proceed to run mutations. For each mutation it:
+    1. installs the mutation
+    2. runs only the tests covering the mutated method
+    3. uninstall the mutation
+
+To do this using mutalk, we need to use the  `SelectingFromCoverageMutantEvaluationStrategy` class instead of `AllTestsMethodsRunningMutantEvaluationStrategy`.
+
+```smalltalk
+analysis := MutationTestingAnalysis
+    testCasesFrom: testCases
+    mutating: classesToMutate
+    using: MutantOperator contents
+    with: SelectingFromCoverageMutantEvaluationStrategy new.
+
+testSelection := [analysis run.] timeToRun. "0:00:00:16.453"
+```
+
+Running this on the same machine takes three seconds less, which means it is 1.15x faster
+
+```smalltalk
+(19.071 / 16.453) "1.15x"
+```
+
+Of course, the gains could be even bigger for bigger projects.
+
+### Mutant selection
+
+A second way to reduce the runtime of mutation testing is to run the analysis with a subset of the original mutants.
+A naïve selection would, again of course, impact the results and thus the mutation score, potentially leading to misleading results.
+(Although research has somewhat established that random selection *works pretty well*).
+In this section, we will see a conservative way to mutant selection: *only run mutants that are covered by at least a test*.
+
+This technique uses code coverage as a metric:
+1. it first runs all tests and evaluates the code coverage of each test. Particularly, it remembers what method was covered by what test.
+2. then, it computes mutants only on those methods that are covered
+3. then, we proceed to run mutations. For each mutation it:
+    1. installs the mutation
+    2. runs the tests
+    3. uninstall the mutation
