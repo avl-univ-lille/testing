@@ -17,8 +17,9 @@ Get in contact!
 - **Module 0: Testing Refresher.** Importance of testing. RIGHT BICEP principle: Right, boundaries, inverse and error conditions, cross-checks, and performance. Automated testing. Unit testing frameworks. Examples: JUnit and SUnit.
 - **Module 1: Mutation Analysis.** Computing test case quality as the ability to detect bugs. Competent developer hypothesis. Simulating developer errors with artificial mutations. Mutation operators, mutations, mutants. Killed and surviving mutants. Mutation score. Equivalent mutants and trivial mutants.
 - **Module 2: Introduction to Fuzzing.** Testing with randomly generated data. Fuzzing. Guide fuzzers with domain knowledge. Building an initial fuzzing framework. Evaluating results.
-- **Module 3: The Oracle Problem.** The Oracle problem. Derived, specified, and implicit oracles. Dealing with the absence of oracles. Introducing the Oracle problem for compilers.
-- **Module 4: Differential Testing.** Comparing existing systems to evaluate behavior. Dealing with the absence of ground truth.
+- **Module 3: Grammar-Based Fuzzing.** Compilers Phases as fuzzing barriers. Syntactic fuzzing based on grammars. Building a Grammar fuzzer.
+- **Module 4: The Oracle Problem.** The Oracle problem. Derived, specified, and implicit oracles. Dealing with the absence of oracles. Introducing the Oracle problem for compilers.
+- **Module 5: Differential Testing.** Comparing existing systems to evaluate behavior. Dealing with the absence of ground truth.
 
 ## Bibliography
 
