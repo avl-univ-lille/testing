@@ -19,9 +19,27 @@ Metacello new
   load.
 ```
 
-## Warming-up with UUID
+## Starting with code coverage
 
-Evaluate the quality of Pharo's UUID library:
+In the beginning of this practice we are going to study Pharo's UUID library.
+Later, we are going to pass on to more complex libraries that also have more interesting results.
+
+Open the DrTest tool in Pharo using the menu `Browse > DrTest`.
+
+<img width="343" alt="imagen" src="https://github.com/UnivLille-Meta/Miage23/assets/708322/2cc39d99-59be-4dc7-afad-c7388bc690c1">
+
+There select `Test Coverage` in the combo box. Tell the UI you want to analyse the coverage using the tests in the `Network-Tests` package and you want to evaluate how it covers the package `Network-UUID`.
+
+<img width="799" alt="imagen" src="https://github.com/UnivLille-Meta/Miage23/assets/708322/c60409e8-d344-4ea7-a4dc-ff42ff47c26b">
+
+Things to think about:
+- How much coverage does it show?
+- How can you increase the coverage?
+- Is coverage a good proxy for code and test quality?
+
+## Mutating UUID
+
+Now let's analyse the quality of Pharo's UUID library from a mutation testing perspective:
 
 ```smalltalk
 testCases :=  { UUIDPrimitivesTest }.
@@ -51,6 +69,11 @@ Doing programatic analysis being a bit more hardcore for a first approach, we wi
 alive := analysis generalResult aliveMutants.
 ```
 
+Things to think about:
+- The mutation score clearly differs from the coverage percentage. Can you come up with some ideas of how to bridge this gap?
+- What measure is more precise? What does it mean precise anyways when thinking about test quality?
+- Are both analyses useful? Or one is better and can replace the other for all purposes?
+
 ### Understanding alive mutants
 
 Inspecting the `generalResult` object yields a GUI showing the surviving mutants.
@@ -67,6 +90,10 @@ This could be due to many different issues. Either
  - the test suite is not strong enough: we miss some tests
  - the mutation is equivalent: the code mutated but generated code that does the same
  - or (as a special case of the previous one) the mutated code is dead code: thus it will never be executed
+
+Things to think about:
+- Before we had *not covered method* (actually the tool measures it at a finer granularity but it is not shown...), and now we have *surviving mutants*. What is the relationship between them? Why they differ in number? Are there implementation differences in the analyses? Or some important differences between the approaches?
+- Related to the question before: can you think about an example of code that is covered but fails mutation testing?
 
 ### Increasing the mutation score
 
@@ -135,7 +162,7 @@ In the same vein, we never compare `b < a`.
 4. Extend the list of test classes to also include `UUIDGeneratorTest`, run the analysis again and analyse the survivors.
    - which ones look like equivalent mutants? why?
    - can you change the method `UUIDGenerator>>#nextRandom16` to increase the coverage even further?
-  
+
 ## Improving Mutation Analysis Runtime
 
 Naively computing the mutation score for a project means to run all tests once per mutant.
@@ -261,6 +288,11 @@ Running this on the same machine takes 35 seconds less than the original, which 
 
 Of course, again , the gains could be even bigger for bigger projects that have low coverage.
 
+Things to think about:
+- Can you think about more trade-offs between coverage and mutation score?
+- We saw that we can use coverage to improve mutation performance. Can you think about other usages of coverage? and what about other ways to improve mutation testing performance?
+
+
 ### More exercises
 
 Do a mutation analysis of the [AVL project](https://github.com/pharo-containers/AVL).
@@ -271,6 +303,7 @@ Run mutation testing on it and think about the following questions:
 - is it well tested?
 - is there some trivial test missing that you could add?
 - How could you check if mutalk is produding *interesting* mutations? What if it's missing something important?
+
 
 ### Further?
 
