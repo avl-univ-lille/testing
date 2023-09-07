@@ -261,6 +261,17 @@ Running this on the same machine takes 35 seconds less than the original, which 
 
 Of course, again , the gains could be even bigger for bigger projects that have low coverage.
 
+### More exercises
+
+Do a mutation analysis of the [AVL project](https://github.com/pharo-containers/AVL).
+AVL here is not Analyse et Verification de Logiciels, the M1 lecture from Univ. Lille.
+Here [AVL is a tree data structure](https://en.wikipedia.org/wiki/AVL_tree) that is self-balancing, meaning it has uniform search times.
+
+Run mutation testing on it and think about the following questions:
+- is it well tested?
+- is there some trivial test missing that you could add?
+- How could you check if mutalk is produding *interesting* mutations? What if it's missing something important?
+
 ### Further?
 
 Of course different other strategies could be used to improve performance.
