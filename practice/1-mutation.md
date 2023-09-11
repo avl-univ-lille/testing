@@ -213,6 +213,8 @@ analysis := MutationTestingAnalysis
     mutating: classesToMutate
     using: MutantOperator contents
     with: AllTestsMethodsRunningMutantEvaluationStrategy new.
+
+analysis run.
 ```
 
 This analysis takes around 2 minute (it was 1 minute, 52 secs in my machine when I ran this).
