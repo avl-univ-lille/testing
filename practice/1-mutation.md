@@ -161,7 +161,7 @@ In the same vein, we never compare `b < a`.
 
 4. Extend the list of test classes to also include `UUIDGeneratorTest`, run the analysis again and analyse the survivors.
    - which ones look like equivalent mutants? why?
-   - can you change the method `UUIDGenerator>>#nextRandom16` to increase the coverage even further?
+   - can you change the method `UUIDGenerator>>#nextRandom16` to increase the killed mutant count even further?
 
 ## Improving Mutation Analysis Runtime
 
