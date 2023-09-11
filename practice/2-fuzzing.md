@@ -10,7 +10,7 @@ For this purpose, we will use the [phuzzer](https://github.com/Alamvic/phuzzer/)
 For this practice, you will need to:
  - install the pharo launcher
  - install Pharo11 through the launcher
- - install mutalk in Pharo:
+ - install phuzzer in Pharo:
    - open a playground
    - execute the following expression:
   
