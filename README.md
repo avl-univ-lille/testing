@@ -8,7 +8,7 @@ This repository contains the material of a (short) advanced testing course origi
 - [TP/Homework](tp.md)
 
 Get in contact!
-- [Discord server](https://discord.gg/h2mH5Daq)
+- [Discord server](https://discord.gg/buSAmrAfE)
 - email: guillermo.polito_at_inria.fr
 
 
