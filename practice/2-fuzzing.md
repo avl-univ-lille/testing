@@ -159,10 +159,11 @@ Check the documentation of *gnocco* the grammar library in https://github.com/Al
  - what would it take to have names as months (e.g., february, january)?
  - what if we would like to have more field separators (e.g., /, -, spaces)
 
-2. Try fuzz the `Color class >> fromString:` method.
+2. Try fuzzing the `Color class >> fromString:` method.
+What kind of inputs do you need to generate?
 Check the implementation and see what could be an effective grammar for this method.
 
-3. Download the [XML Parser](https://github.com/pharo-contributions/XML-XMLParser) library and fuzz it.
+4. Download the [XML Parser](https://github.com/pharo-contributions/XML-XMLParser) library and fuzz it.
 XML is a super well tested library, so we could expect to have few bugs here.
 Could you run first mutation testing on it to find weak parts of the API, then fuzz it?
 
