@@ -127,7 +127,7 @@ For example, the grammar below builds dates that look like `[number]-[number]-[n
 ```smalltalk
 MyDateGrammar >> defineGrammar
 
-  "The superclass defines how to generate numbers
+  "The superclass defines how to generate numbers"
 	super defineGrammar.
 
 	ntDate --> ntDay , ntSeparator , ntMonth , ntSeparator , ntYear.
