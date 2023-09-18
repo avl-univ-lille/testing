@@ -1,6 +1,6 @@
 # Fuzzing practice
 
-In this practice, we will learn how to use fuzzing testing to discover bugs in a library.
+In this practice, we will learn how to use fuzz testing to discover bugs in a library.
 In its simpler form, fuzzing is about generating random input strings to feed to a library.
 A simple library we can fuzz is a parser.
 For this purpose, we will use the [phuzzer](https://github.com/Alamvic/phuzzer/) library on top of Pharo 11.
