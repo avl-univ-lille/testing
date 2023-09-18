@@ -48,7 +48,7 @@ Try configuring the random fuzzer to do the following:
 - generate short alphanumeric (only letters) strings
 
 Things to think about:
-- Think about the limits of this fuzzer? How "complex" are the strings we can generate? What about fuzzing more than one parameter? What if we need one string depending on another one?
+- Think about the limits of this fuzzer? How "complex" are the strings we can generate?
 - Extra: How could you modify this fuzzer to generate hexadecimal strings? Tip: you may want to change the code of the `PzRandomFuzzer` class.
 
 ## Fuzzing a Date parser
@@ -79,6 +79,7 @@ Things to think about:
 - Check the successes. Are they real successes?
 - What about the errors? Are there some of them that look like bugs? How can you make the difference between bugs and expected behavior?
 - What would happen if our fuzzer only generates strings with numbers? Does it change the results whether those strings are short or long?
+- What about fuzzing libraries with more than one parameter? What if we need one parameter depending on another one?
 
 **Tips:** Remember you can use `select: aBooleanBlock` on collections to filter the results and help you analyse results.
 
