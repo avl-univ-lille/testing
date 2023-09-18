@@ -118,7 +118,7 @@ Create a grammar class for MDYYYY dates called `MyDateGrammar` as follows:
 GncBaseGrammar subclass: #MyDateGrammar
 	instanceVariableNames: 'ntDate ntDay ntSeparator ntMonth ntYear'
 	classVariableNames: ''
-	package: 'Phuzzer'
+	package: 'MyFuzzer'
 ```
 
 And then, add the method `defineGrammar` that gives strings that look like dates.
