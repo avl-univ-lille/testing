@@ -49,7 +49,7 @@ Try configuring the random fuzzer to do the following:
 
 Things to think about:
 - Think about the limits of this fuzzer? How "complex" are the strings we can generate?
-- Extra: How could you modify this fuzzer to generate hexadecimal strings? Tip: you may want to change the code of the `PzRandomFuzzer` class.
+- Extra: How could you modify this fuzzer to generate hexadecimal strings? Tip: you may want to create your own subclass or change the code of the `PzRandomFuzzer` class.
 
 ## Fuzzing a Date parser
 
