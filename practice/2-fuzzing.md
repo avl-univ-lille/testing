@@ -152,15 +152,17 @@ Things to think about:
 
 ### More exercises
 
-Modify the date grammar to build different variants:
- - a variant that ensures that the day or month fields have no more than two digits
- - what would it take to have names (e.g., february, january) as months?
+Check the documentation of *gnocco* the grammar library in https://github.com/Alamvic/gnocco/.
+
+1. Modify the date grammar or build new ones implementing different variants:
+ - the day or month fields have no more than two digits
+ - what would it take to have names as months (e.g., february, january)?
  - what if we would like to have more field separators (e.g., /, -, spaces)
 
-Try fuzz the `Color class >> fromString:` method.
+2. Try fuzz the `Color class >> fromString:` method.
 Check the implementation and see what could be an effective grammar for this method.
 
-Download the [XML Parser](https://github.com/pharo-contributions/XML-XMLParser) library and fuzz it.
+3. Download the [XML Parser](https://github.com/pharo-contributions/XML-XMLParser) library and fuzz it.
 XML is a super well tested library, so we could expect to have few bugs here.
 Could you run first mutation testing on it to find weak parts of the API, then fuzz it?
 
