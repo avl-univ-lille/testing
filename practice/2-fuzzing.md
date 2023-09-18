@@ -17,7 +17,7 @@ For this practice, you will need to:
 ```smalltalk
 Metacello new
   baseline: 'Phuzzer';
-  repository: 'github://alamvic/phuzzer';
+  repository: 'github://alamvic/phuzzer:main';
   onConflictUseIncoming;
   load.
 ```
