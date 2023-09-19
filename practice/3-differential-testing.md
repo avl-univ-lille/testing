@@ -75,7 +75,7 @@ f run: rd times: 1000.
 Things to think about:
 - Check the successes. Are they real successes?
 - What about the errors? Are we catching bugs that we did not catch before?
-- Check the code of the `PzDifferentialRunner` that looks for agreements: could it be stronger? How could we configure the code of the agreements?
+- Check the code of the `PzDifferentialRunner` that looks for agreements: could it be stronger? How could we configure the code that decides if two outcomes are the same with, for example, a strategy pattern? We could for example say that two failures are the same if they are both expected, or both unexpected.
 
 ### More exercises
 
