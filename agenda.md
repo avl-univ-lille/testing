@@ -16,17 +16,6 @@
 ## Week 2
 
 ### Theory
-Code Coverage
-
-### Practice
-- Code coverage practice
-
-### Homework
-- TP Task 1
-
-## Week 3
-
-### Theory
 - Module 1 - mutation analysis
 
 ### Practice
@@ -34,9 +23,9 @@ Code Coverage
 
 ### Homework
 - Run Mutation testing on the XML library
-- TP Task 2
+- TP Task 1
 
-## Week 4
+## Week 3
 - Module 2 - introduction to fuzzing
 
 ### Practice
@@ -44,9 +33,8 @@ Code Coverage
 
 ### Homework
 - TP Task 2
-- TP Task 3
 
-## Week 5
+## Week 4
 - Module 3 - test oracles
 - Module 4 - differential testing
 
@@ -56,8 +44,19 @@ Code Coverage
 ### Homework
 - TP Task 3
 
-## Week 6
-- Fault Localization
+## Week 5
+- Module 5 - Mutational Fuzzing
 
 ### Practice
-- Fault Localization practice
+- Mutation fuzzing practice
+
+### Homework
+- TP Task 3
+
+## Week 6
+- Extra: Metamorphic testing
+- Extra: Concolic testing
+- Exam
+
+### Practice
+- Finish TP and corrections
