@@ -18,6 +18,10 @@ Metacello new
   baseline: 'MuTalk';
   repository: 'github://pharo-contributions/mutalk:v2.5.0/src';
   load.
+Metacello new
+  baseline: 'AVLTesting';
+  repository: 'github://avl-univ-lille/practice';
+  load.
 ```
 
 ## Starting with code coverage
