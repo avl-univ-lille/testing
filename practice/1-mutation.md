@@ -1,7 +1,7 @@
 # Mutation testing practice
 
 In this practice, we will learn how to use mutation testing on a real project to evaluate test quality.
-For this purpose, we will use the [mutalk](https://github.com/pharo-contributions/mutalk) library on top of Pharo 11.
+For this purpose, we will use the [mutalk](https://github.com/pharo-contributions/mutalk) library on top of Pharo 12.
 
 ## Setup
 
@@ -16,7 +16,7 @@ For this practice, you will need to:
 Deprecation activateTransformations: false.
 Metacello new
   baseline: 'MuTalk';
-  repository: 'github://pharo-contributions/mutalk:v2.3.0/src';
+  repository: 'github://pharo-contributions/mutalk:v2.5.0/src';
   load.
 ```
 
