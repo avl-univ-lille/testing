@@ -159,7 +159,7 @@ If we check, that method is only called with correct arguments
 Naively computing the mutation score for a project means to run all tests once per mutant.
 This means that the time to run the tests will increase with larger code bases (because more mutants could be computed) and with bigger test cases.
 
-For example, our previous code takes around 20 seconds to run on an Apple Silicon M1 machine.
+For example, our previous code takes around 45 seconds to run on an Apple Silicon M1 machine.
 
 ```smalltalk
 testCases :=  { UUIDPrimitivesTest. UUIDTest. UUIDGeneratorTest }.
@@ -169,7 +169,7 @@ analysis := MTAnalysis new
     testClasses: testCases;
     classesToMutate: classesToMutate.
 
-[analysis run.] timeToRun. "0:00:00:37.057"
+[analysis run.] timeToRun. "0:00:00:44.094"
 ```
 
 To allow better configurations, Mutalk uses a modular design where the user configures differents aspects of the analysis.
