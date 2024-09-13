@@ -119,44 +119,36 @@ testCases :=  { UUIDPrimitivesTest. UUIDTest }.
 
 
 Now that we have harvested the low-hanging fruits, we can try to write a test.
+We can first look at what methods have the most surviving mutants.
+We can do that by getting the surviving mutants and grouping them by method.
+
+```
+((analysis generalResult aliveMutants)
+	groupedBy: [ :m |m mutant originalMethod ])
+		associations sorted: [ :a :b | a value size > b value size ]
+```
+
 For example, we see lots of mutations survived in the following method:
 
 ```smalltalk
-UUID >> fromString: aString
-	"Read a UUID from aString with my official representation, 32 lowercase hexadecimal (base 16) digits, displayed in five groups separated by hyphens, in the form 8-4-4-4-12 for a total of 36 characters (32 alphanumeric characters and four hyphens)"
+UUID >> readFrom: aStream
+	"Read my official representation, 32 lowercase hexadecimal digits, displayed in five groups separated by hyphens, in the form 8-4-4-4-12 for a total of 36 characters (32 alphanumeric characters and four hyphens) from aStream"
 
-	| uuid |
-	aString size ~= 36 ifTrue: [
-		self error: 'a UUID should be 36 characters' ].
-	uuid := self nilUUID.
-	uuid readFrom: aString readStream.
-	^ uuid
+	1 to: 4 do: [ :i | uuidData at: i put: (Integer readHexByteFrom: aStream) ].
+	aStream next = $- ifFalse: [ self error: '- separator expected' ].
+	5 to: 6 do: [ :i | uuidData at: i put: (Integer readHexByteFrom: aStream) ].
+	aStream next = $- ifFalse: [ self error: '- separator expected' ].
+	7 to: 8 do: [ :i | uuidData at: i put: (Integer readHexByteFrom: aStream) ].
+	aStream next = $- ifFalse: [ self error: '- separator expected' ].
+	9 to: 10 do: [ :i | uuidData at: i put: (Integer readHexByteFrom: aStream) ].
+	aStream next = $- ifFalse: [ self error: '- separator expected' ].
+	11 to: 16 do: [ :i | uuidData at: i put: (Integer readHexByteFrom: aStream) ]
 ```
 
 This means that method is probably not well covered.
-If we check, that method is only called with correct arguments, 36-long strings with the expected format.
+If we check, that method is only called with correct arguments
 
-```smalltalk
-UUIDTest >> testComparison
-	| a b |
-	a := UUID fromString: '0608b9dc-02e4-4dd0-9f8a-ea45160df641'.
-	b := UUID fromString: 'e85ae7ba-3ca3-4bae-9f62-cc2ce51c525e'.
-...
-
-UUIDTest >> testUUIDVersion5
-
-	| uuid |
-	uuid := UUID fromString: 'edc460cf-4904-54cb-9add-47d7d6ac33f1'.
-...
-
-UUIDTest >> testUUIDVersion3
-
-	| uuid |
-	uuid := UUID fromString: 'a3bb189e-8bf9-3888-9912-ace4e6543002'.
-...
-```
-
-3. add tests that will cover the missing branch, run the analysis again and explore the results.
+3. add tests that will cover the missing branches, run the analysis again and explore the results.
 
 4. Extend the list of test classes to also include `UUIDGeneratorTest`, run the analysis again and analyse the survivors.
    - which ones look like equivalent mutants? why?
