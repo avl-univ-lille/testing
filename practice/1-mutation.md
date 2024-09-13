@@ -206,6 +206,17 @@ analysis run.
 
 This analysis takes around 2 minutes (it was 1 minute, 54 secs in my machine when I ran this).
 
+### Common Optimizations
+
+Optimizing the mutation testing process is common in most frameworks.
+Some common optimizations are:
+- Stop the analysis of a mutant as soon as one test fails
+- Run only the tests that cover the mutant
+- Remove tests that take too long (for example, they use networking or other slow resources)
+
+However, even with those optimizations, the list of mutants and tests to run may still be big enough to not be practical.
+In such situations, other solutions come from a statistical observation: a subset of mutants usually represents the entire mutant population.
+
 ### Test selection
 
 One way to reduce the runtime of mutation testing is to run the analysis on a subset of the original tests.
