@@ -7,7 +7,7 @@ For this purpose, we will use the [mutalk](https://github.com/pharo-contribution
 
 For this practice, you will need to:
  - install the pharo launcher
- - install Pharo11 through the launcher
+ - install Pharo12 through the launcher
  - install mutalk in Pharo:
    - open a playground
    - execute the following expression:
