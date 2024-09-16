@@ -213,7 +213,8 @@ analysis := MTAnalysis new
 
 ```
 
-This analysis takes around 2 minutes (it was 1 minute, 54 secs in my machine when I ran this).
+This analysis takes very long! Don't do it on your machines unless you have to go and do some jogging.
+Can we do better?
 
 ### Common Optimizations
 
@@ -226,9 +227,31 @@ Some common optimizations are:
 However, even with those optimizations, the list of mutants and tests to run may still be big enough to not be practical.
 In such situations, other solutions come from a statistical observation: a subset of mutants usually represents the entire mutant population.
 
+### Stop on the first test
+
+One of the options we used above was `stopOnErrorOrFail: false`.
+Thing is, when evaluating a mutant, if we only are interested on killing the mutant, getting one test red is enough.
+The option `stopOnErrorOrFail:` controls whether we stop on the first red test or we continue running all tests.
+Running all tests is only interesting if we want to do an analysis of impact of mutants vs tests.
+
+If we change the value of this setting, this improves the performance by A LOT!
+```
+testCases := {PDFHorizontalLayoutTest. PDFBasicTest. PDFElementTest. PDFLayoutTest. PDFColorTest. PDFFontTest. PDFParagraphTest. PDFDataTypeTest. PDFGeneratorTest. PDFStreamPrinterTest}.
+classesToMutate := 'Artefact-Core' asPackage definedClasses.
+
+analysis := MTAnalysis new
+    testClasses: testCases;
+    classesToMutate: classesToMutate;
+	 testSelectionStrategy: MTAllTestsMethodsRunningTestSelectionStrategy new;
+	 budget: MTFreeBudget new;
+	 stopOnErrorOrFail: true. 
+```
+This took 0:00:18:02.43 on my M1 machine.
+So, 2.33x times faster!
+
 ### Test selection
 
-One way to reduce the runtime of mutation testing is to run the analysis on a subset of the original tests.
+One other way to reduce the runtime of mutation testing is to run the analysis on a subset of the original tests.
 This technique uses code coverage as a metric:
 
 1. it first runs all tests and evaluates the code coverage of each test. Particularly, it remembers what method was covered by what test.
@@ -246,25 +269,11 @@ The two snippets of code below allow us to run the analysis by running all tests
 analysis := MTAnalysis new
     testClasses: testCases;
     classesToMutate: classesToMutate;
-    testSelectionStrategy: MTAllTestsMethodsRunningTestSelectionStrategy new.
-
-analysis := MTAnalysis new
-    testClasses: testCases;
-    classesToMutate: classesToMutate;
-    testSelectionStrategy: MTAllTestsMethodsRunningTestSelectionStrategy new;
+    testSelectionStrategy: MTSelectingFromCoverageTestSelectionStrategy new;
     stopOnErrorOrFail: false.
 ```
 
-Running these two configurations gives us an idea of the power of these optimizations.
-Running all the tests but stopping on the first failure took 25 seconds more (2'19 seconds).
-Running without stopping on the first failure took a total of 4 minutes.
-
-Compared to the original 2 minutes, such optimizations yielded wins of 16% and 100% respectively.
-
-```smalltalk
-(140 "seconds" / 120 "seconds") "1.16x"
-(240 "seconds" / 120 "seconds") "2x"
-```
+>> HERE
 
 Of course, the gains could be even bigger for bigger projects.
 
