@@ -270,10 +270,15 @@ analysis := MTAnalysis new
     testClasses: testCases;
     classesToMutate: classesToMutate;
     testSelectionStrategy: MTSelectingFromCoverageTestSelectionStrategy new;
-    stopOnErrorOrFail: false.
+    stopOnErrorOrFail: true.
 ```
 
->> HERE
+```
+[analysis run.] timeToRun 
+"0:00:14:17.594"
+```
+
+This is ~3x faster the original analysis.
 
 Of course, the gains could be even bigger for bigger projects.
 
@@ -292,7 +297,6 @@ To do this, mutalk proposes a combination of the following features:
 - **execution budgets** select how many mutants to run: a fixed number of mutants, a percentage of mutants, or a time budget.
 
 The following script shows how to run the analysis for only 10% of the mutants.
-This uses by default the order of mutant creation.
 As expected, 10% of the mutants run for 10% of the time of the original analysis, which is an aggressive optimization.
 
 ```smalltalk
@@ -301,7 +305,7 @@ analysis := MTAnalysis new
     classesToMutate: classesToMutate;
     budget: (MTPercentageOfMutantsBudget for: 10).
 
-t := [analysis run.] timeToRun. "0:00:00:24.648"
+t := [analysis run.] timeToRun. "0:00:01:31.614"
 ```
 
 Things to think about:
