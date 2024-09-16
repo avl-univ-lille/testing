@@ -191,7 +191,11 @@ Metacello new
 	load.
 ```
 
-And run mutation analysis with the following script:
+And if you (but don't!) run mutation analysis with the following options, it takes a long time!
+In my machine this took ~42 minutes.
+Notice the options we used:
+ - do not stop on error
+ - run all tests per mutant
 
 ```smalltalk
 testCases := {PDFHorizontalLayoutTest. PDFBasicTest. PDFElementTest. PDFLayoutTest. PDFColorTest. PDFFontTest. PDFParagraphTest. PDFDataTypeTest. PDFGeneratorTest. PDFStreamPrinterTest}.
@@ -199,9 +203,14 @@ classesToMutate := 'Artefact-Core' asPackage definedClasses.
 
 analysis := MTAnalysis new
     testClasses: testCases;
-    classesToMutate: classesToMutate.
+    classesToMutate: classesToMutate;
+	 testSelectionStrategy: MTAllTestsMethodsRunningTestSelectionStrategy new;
+	 budget: MTFreeBudget new;
+	 stopOnErrorOrFail: false.
 
-analysis run.
+[analysis run.] timeToRun 
+"0:00:41:05.219"
+
 ```
 
 This analysis takes around 2 minutes (it was 1 minute, 54 secs in my machine when I ran this).
