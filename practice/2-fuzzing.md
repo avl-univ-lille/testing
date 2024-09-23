@@ -3,13 +3,13 @@
 In this practice, we will learn how to use fuzz testing to discover bugs in a library.
 In its simpler form, fuzzing is about generating random input strings to feed to a library.
 With bare strings, we can imagine fuzzing a library implementing a parser.
-For this purpose, we will use the [phuzzer](https://github.com/Alamvic/phuzzer/) library on top of Pharo 11.
+For this purpose, we will use the [phuzzer](https://github.com/Alamvic/phuzzer/) library on top of Pharo 12.
 
 ## Setup
 
 For this practice, you will need to:
  - install the pharo launcher
- - install Pharo11 through the launcher
+ - install Pharo12 through the launcher
  - install phuzzer in Pharo:
    - open a playground
    - execute the following expression:
