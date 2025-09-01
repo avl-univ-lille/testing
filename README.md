@@ -5,7 +5,7 @@ This repository contains the material of a (short) advanced testing course origi
 - [Course Agenda](agenda.md)
 - [Course Material](slides)
 - [Course Practices](practice)
-- [TP/Homework](tp.md)
+- [TP/Homework](agenda.md)
 
 Get in contact!
 - [Discord server](https://discord.gg/GbZ8SnxF)
