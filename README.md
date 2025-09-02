@@ -64,3 +64,9 @@ International Conference on Software Testing, Verification and Validation (ICST)
 coverage-guided tracing. In 2019 IEEE Symposium on Security and Privacy (SP) (pp.
 787-802). IEEE
 - Linda Torczon and Keith Cooper. 2007. Engineering A Compiler (2nd. ed.). Morgan Kaufmann Publishers Inc., San Francisco, CA, USA.
+
+## Please watch
+
+- Karate kind (the original) https://www.imdb.com/es/title/tt0087538/
+- Back to the future: https://www.imdb.com/es/title/tt0088763/?ref_=fn_all_ttl_1
+- Watchmen: https://www.imdb.com/es/title/tt0409459/?ref_=fn_all_ttl_1
