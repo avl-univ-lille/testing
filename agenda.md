@@ -20,9 +20,11 @@ Find below extra links that may be useful.
 - **Kata in teams:** https://github.com/gigasquid/wonderland-clojure-katas/tree/master/tiny-maze
 - **More Katas:** https://github.com/gamontal/awesome-katas?tab=readme-ov-file
 
+
 - **Quick Intro Pharo:** https://github.com/avl-univ-lille/testing/blob/2024/practice/0-pharo-introduction.md
 - **Intro Pharo Videos:** https://advanced-design-mooc.pharo.org/#module0
 - **Setting up Pharo:** https://github.com/avl-univ-lille/testing/blob/2024/practice/0-setup-pharo.md
+
 
 - **Refreshing OOP:** https://advanced-design-mooc.pharo.org/#module1
 - **Mooc Testing:** https://advanced-design-mooc.pharo.org/#module2
