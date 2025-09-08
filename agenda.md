@@ -2,7 +2,7 @@
 
 | Week   | Before Break | After Break | Extras |
 |--------|--------------|-------------|--------|
-| 1 - 08/09      | Modules 0, 1 + Kata togeher | Kata in teams  | -
+| 1 - 08/09      | Modules 0, 1 + Kata together | Kata in teams  | -
 | 2 - 15/09 | Module 2 | Mutation Practice | Mini Exam testing
 | 3 - 22/09 | Modules 3, 4 | Fuzzing Practice | Mini Exam mutations
 | 4 - 29/09 | Module 5 | TP | -
